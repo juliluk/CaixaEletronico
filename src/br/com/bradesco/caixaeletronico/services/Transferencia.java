@@ -5,6 +5,5 @@ import br.com.bradesco.caixaeletronico.model.Conta;
 public interface Transferencia {
 
 
-
-    void transferir(double valor,  String numeroDaConta, Conta origem);
+    void execute(double valor, String numeroDaConta);
 }

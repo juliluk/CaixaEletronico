@@ -12,6 +12,8 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
 
     private final AbrirConta abrirConta;
 
+    private final Transferencia transferencia;
+
 
 
     public ExecutarComandoEspecificoImpl() {
@@ -19,6 +21,7 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
         this.deposito = new DepositoImpl(repository);
         this.saque = new SaqueImpl();
         this.abrirConta = new AbrirContaImpl(repository);
+        this.transferencia = new TransferenciaImpl(repository);
 
 
     }
@@ -32,8 +35,12 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
             System.out.println("Encerrando o programa");
             resultado = false;
         } else if (comando == 1) {
-            this.saque.execute(50.0, 283);
+            System.out.println("Digite o numero da Conta");
+            int numero = entrada.nextInt();
+
             System.out.println("Informe valor de Saque");
+            double valor = entrada.nextDouble();
+            this.saque.execute(valor,numero);
 
         } else if (comando == 2) {
             System.out.println("Digite o numero da Conta");
@@ -47,6 +54,15 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
 
         } else if (comando == 3) {
             abrirConta.execute();
+
+        } else if (comando == 4) {
+
+            System.out.println("Informe o numero da Conta");
+            int numero = entrada.nextInt();
+
+            System.out.println("Informe o valor ");
+            double valor = entrada.nextDouble();
+            this.transferencia.execute(valor, String.valueOf(numero));
 
 
         } else {
