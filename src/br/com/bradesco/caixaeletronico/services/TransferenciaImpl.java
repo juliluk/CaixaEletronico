@@ -5,17 +5,29 @@ import br.com.bradesco.caixaeletronico.repository.MemoriaContaRepository;
 
 public class TransferenciaImpl implements Transferencia{
 
+    private final MemoriaContaRepository repository;
 
-    public TransferenciaImpl(MemoriaContaRepository memoriaContaRepository) {
-
+    public TransferenciaImpl(MemoriaContaRepository repository) {
+        this.repository = repository;
     }
+
+
 
     @Override
-    public void execute(double valor, String numeroDaConta) {
+    public void execute(double valor, int numeroDaConta) {
+        Conta conta;
+
+
+        conta = repository.findById(numeroDaConta);//buscar o numero da contad
+
+        conta.adicionaSaldo(valor);
+
         System.out.println("Informa o Número da Conta: " + numeroDaConta);
         System.out.println("Informe o valor de: R$ " + valor);
-
-        System.out.println("Transferencia realizada com sucesso!");
+        System.out.printf("\nO saldo é de R$ " + conta.getSaldo());
+        System.out.println("\nTransferência realizada com sucesso!");
 
     }
+
+
 }

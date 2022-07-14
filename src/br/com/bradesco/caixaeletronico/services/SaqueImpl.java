@@ -5,24 +5,25 @@ import br.com.bradesco.caixaeletronico.repository.MemoriaContaRepository;
 
 public class SaqueImpl implements Saque {
 
-//    private final MemoriaContaRepository repository;
-//
-//    public SaqueImpl(MemoriaContaRepository repository) {
-//        this.repository = repository;
-//    }
+    private final MemoriaContaRepository repository;
+
+    public SaqueImpl(MemoriaContaRepository repository) {
+        this.repository = repository;
+    }
 
 
     @Override
 
     public double execute(double valor, int numeroDaConta) {
-//        Conta conta;
-//
-//        conta = repository.findById(numeroDaConta);//buscar o numero da contad
-//
-//        conta.adicionaSaldo(valor);
+        Conta conta;
+
+        conta = repository.findById(numeroDaConta);//buscar o numero da contad
+
+        conta.retirarSaldo(valor);
         System.out.println("Número da Conta: " + numeroDaConta);
         System.out.println("Sacando o valor de: R$ " + valor);
-        System.out.println("Saque realizado com sucesso!");
+        System.out.printf("O saldo é de R$ " + conta.getSaldo());
+        System.out.println("\nSaque realizado com sucesso!");
         return valor;
 
 

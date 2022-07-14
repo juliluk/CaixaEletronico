@@ -2,7 +2,6 @@ package Generics;
 
 import br.com.bradesco.caixaeletronico.model.Conta;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +18,6 @@ public class GenericsList {
 //
 //        System.out.println(nomeDaVariavel);
 //
-        List lista = new ArrayList();
-        lista.add("Elemento 1");//add
-        lista.add(1);
-        lista.add(new Conta());
-
-        System.out.println(lista);
-
-        List primos = new ArrayList();
-        primos.add(1);
-
 
 
     }
