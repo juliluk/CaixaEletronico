@@ -12,6 +12,7 @@ public class ListarComandosImpl implements ListarComandos {
         System.out.println("2 para efetuar deposito");
         System.out.println("3 para abrir uma conta");
         System.out.println("4 para Transferência");
+        System.out.println("5 para Pix");
 
 
     }
