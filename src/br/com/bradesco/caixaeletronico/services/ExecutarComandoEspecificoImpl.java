@@ -14,17 +14,14 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
 
     private final Transferencia transferencia;
 
-    private final Pix pix;
-
 
 
     public ExecutarComandoEspecificoImpl() {
         MemoriaContaRepository repository = new MemoriaContaRepository();
         this.deposito = new DepositoImpl(repository);
-        this.saque = new SaqueImpl(repository);
+        this.saque = new SaqueImpl();
         this.abrirConta = new AbrirContaImpl(repository);
         this.transferencia = new TransferenciaImpl(repository);
-        this.pix = new PixImpl(repository);
 
 
     }
@@ -53,7 +50,7 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
             double valor = entrada.nextDouble();
             this.deposito.execute(valor,numero);
 
-            System.out.println("\nDepósito realizado!");
+            System.out.println("Depósito realizado!");
 
         } else if (comando == 3) {
             abrirConta.execute();
@@ -65,20 +62,7 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
 
             System.out.println("Informe o valor ");
             double valor = entrada.nextDouble();
-            this.transferencia.execute(valor, numero);
-
-        } else if (comando == 5) {
-            System.out.println("Digite o número da conta: ");
-            int numeroDaConta = entrada.nextInt();
-
-            System.out.println("Digite a chave pix do favorecido: ");
-            String chavePix = entrada.next();
-
-            System.out.println("Digite o valor a ser transferido: ");
-            double valor = entrada.nextInt();
-
-            this.pix.execute( valor, numeroDaConta,chavePix);
-
+            this.transferencia.execute(valor, String.valueOf(numero));
 
 
         } else {
