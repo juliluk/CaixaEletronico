@@ -19,7 +19,7 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
     public ExecutarComandoEspecificoImpl() {
         MemoriaContaRepository repository = new MemoriaContaRepository();
         this.deposito = new DepositoImpl(repository);
-        this.saque = new SaqueImpl();
+        this.saque = new SaqueImpl(repository);
         this.abrirConta = new AbrirContaImpl(repository);
         this.transferencia = new TransferenciaImpl(repository);
 
@@ -62,7 +62,7 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
 
             System.out.println("Informe o valor ");
             double valor = entrada.nextDouble();
-            this.transferencia.execute(valor, String.valueOf(numero));
+            this.transferencia.execute(valor, numero);
 
 
         } else {
