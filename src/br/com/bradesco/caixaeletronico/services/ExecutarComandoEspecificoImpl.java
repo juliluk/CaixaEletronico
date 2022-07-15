@@ -71,11 +71,11 @@ public class ExecutarComandoEspecificoImpl implements ExecutarComandoEspecifico 
             System.out.println("Digite o número da conta: ");
             int numeroDaConta = entrada.nextInt();
 
-            System.out.println("Digite o valor a ser transferido: ");
-            double valor = entrada.nextInt();
-            
             System.out.println("Digite a chave pix do favorecido: ");
             String chavePix = entrada.next();
+
+            System.out.println("Digite o valor a ser transferido: ");
+            double valor = entrada.nextInt();
 
             this.pix.execute( valor, numeroDaConta,chavePix);
 
